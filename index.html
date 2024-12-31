@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Creative-English-Generator</title>
     <link rel="stylesheet" href="src/styles.css"/>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 </head>
 <body>
     <div class="container">
     <header>
-    <h1>AI Creative English Generator</h1>
+    <h1> English Generator</h1>
     </header>
     <main>
-        <form>
+        <form id="creative-generator-form">
             <input type="text" placeholder="Enter the topic of the story"
              autofocus 
              required
@@ -21,10 +22,7 @@
              class="instruction"/>
             <input type="submit" class="submit-button"/>
         </form>
-        <div class="generator">
-            The story will go here
-            <br/>
-            The story will go here
+        <div class="generator" id="story">
         </div>
     </main>
 
