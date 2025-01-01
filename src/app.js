@@ -1,5 +1,6 @@
 function displayStory(response){
-    console.log("story generated");
+  console.log("story generated");
+    
 
 
 new Typewriter('#story', {
@@ -19,14 +20,21 @@ new Typewriter('#story', {
 function generateStory(event){
     event.preventDefault();
 
-  let storyElement=document.querySelector("#story");
+    
+
+
+
+
   let instructionsInput=document.querySelector("#user-instructions");
 
   let apiKey="fbbeo522008a6t423889d2a000ef043e";
-  let prompt=`Usr instructions: Generate creative english stories ${instructionsInput.value}`;
-  let context="You are helpful AI Assistant who has a lot of knowlege about creative stories or compositions and love to to write.Your mission is to generate short stories or compositions in basic HTML not more than 120 words, do not include the tittle of the story.Make sure to follow user instructions.";
-   
+  let prompt=`User instructions: Generate creative english stories ${instructionsInput.value}`;
+  let context="You are helpful AI Assistant who has a lot of knowlege about creative stories or compositions and love to to write.Your mission is to generate short stories or compositions in basic HTML not more than 4 paragraphs, do not include the tittle of the story.Make sure to follow user instructions."; 
    let apiURL=`https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+   let storyElement=document.querySelector("#story");
+   storyElement.classList.remove("hidden");
+   storyElement.innerHTML=`<div class="generating"> ⏳Generating story about ${instructionsInput.value}</div>`;
 
   axios.get(apiURL).then(displayStory);
   console.log("Generating story");
@@ -39,5 +47,5 @@ function generateStory(event){
 
 }
 
-let creativeGeneratorFormElement=document.querySelector("#creative-generator-form");
-creativeGeneratorFormElement.addEventListener("submit", generateStory);
+let storyGeneratorFormElement=document.querySelector("#story-generator-form");
+storyGeneratorFormElement.addEventListener("submit", generateStory);
